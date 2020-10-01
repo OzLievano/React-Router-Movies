@@ -3,9 +3,12 @@ import {useParams, useRouteMatch}  from 'react-router-dom'
 import axios from 'axios';
 
 export default function Movie(props) {
+  console.log(props);
   const [movie, setMovie] = useState();
-
   let id = 1;
+  
+  const {path,url} = useRouteMatch();
+  console.log(path,url)
   // Change ^^^ that line and use a hook to obtain the :id parameter from the URL
 
   useEffect(() => {

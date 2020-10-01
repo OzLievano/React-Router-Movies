@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {BrowserRouter as Router,Route} from 'react-router-dom';
+import {BrowserRouter as Router,Route, useParams,useRouteMatch} from 'react-router-dom';
 import MovieList from './Movies/MovieList';
 import Movie from './Movies/Movie';
 import axios from 'axios';
@@ -34,12 +34,12 @@ export default function App () {
   return (
     <div>
       <SavedList list={[ /* This is stretch */]} />
-
+      <Route path="/movies/:id"><Movie movie={movieList}/></Route>
       <Route exact path ="/"><MovieList data={movieList}/></Route>
       {/* <Route path="/shop/:itemId/valueterm/:moreInfo">
           <Item items={products} />
         </Route> */}
-      <Route path="/movies/:id"><Movie/></Route>
+  
     </div>
   );
 }
