@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router,Route} from 'react-router-dom';
 import MovieList from './Movies/MovieList';
+import Movie from './Movies/Movie';
 import axios from 'axios';
 
 import SavedList from './Movies/SavedList';
@@ -16,6 +17,8 @@ export default function App () {
         .then(response => {
           // Study this response with a breakpoint or log statements
           // and set the response data as the 'movieList' slice of state
+          console.log(response);
+          setMovieList(response.data)
         })
         .catch(error => {
           console.error('Server Error', error);
@@ -32,11 +35,11 @@ export default function App () {
     <div>
       <SavedList list={[ /* This is stretch */]} />
 
-      <Route exact path ="/" component={MovieList}></Route>
+      <Route exact path ="/"></Route>
       {/* <Route path="/shop/:itemId/valueterm/:moreInfo">
           <Item items={products} />
         </Route> */}
-      <Route path=""></Route>
+      <Route path="/movies/:id"><Movie/></Route>
     </div>
   );
 }
